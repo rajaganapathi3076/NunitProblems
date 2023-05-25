@@ -11,7 +11,7 @@ namespace NunitProblems
         static void Main(string[] args)
         {
            
-            Console.WriteLine("Welcome to the Nunit problems");
+            Console.WriteLine("Welcome to the Nunit Vending Machine problems UC1");
             int[] notes = new int[] { 1000, 500, 100, 50, 20,10, 5, 2, 1 };
             int amount = 0;
             Console.WriteLine("Enter the amount:");
