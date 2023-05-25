@@ -6,33 +6,45 @@ using System.Threading.Tasks;
 
 namespace NunitProblems
 {
-    internal class Program
+    
+    
+ 
+
+    public static class MathUtils
     {
-        static void Main(string[] args)
+        public static double Sqrt(double c)
         {
-            Console.WriteLine("Welcome to the monthlypaments for EMI UC4");
+            if (c < 0)
+            {
+                throw new ArgumentException("Input must be nonnegative.");
+            }
 
-            Console.WriteLine("Please enter the Principal amount");
-            double p = Convert.ToDouble(Console.ReadLine());
-            Console.WriteLine("Please enter the how many year you want");
-            double Y = Convert.ToDouble(Console.ReadLine());
-            Console.WriteLine("Enter the Rate of interest");
-            double R = Convert.ToDouble(Console.ReadLine());
+            double t = c;
+            double epsilon = 1e-15;
 
+            while (Math.Abs(t - c / t) > epsilon * t)
+            {
+                t = (c / t + t) / 2.0;
+            }
 
-            double n = 12 * Y;
-            double r = R / (12 * 100);
-
-            double payment = (p * r) / (1 - Math.Pow(1 + r, -n));
-
-            Console.WriteLine("The total Monthly Payment {0}", payment);
-
-
-
-
+            return t;
         }
+    }
+
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("Please Enter the number");
+            double number=Convert.ToDouble(Console.ReadLine());
+            
+            double squareRoot = MathUtils.Sqrt(number);
+            Console.WriteLine($"Square root of {number} is: {squareRoot}");
+        }
+    }
 
 
 
 
-}   }
+
+}   
