@@ -10,23 +10,17 @@ namespace NunitProblems
     {
         static void Main(string[] args)
         {
-           
-            Console.WriteLine("Welcome to the Nunit Vending Machine problems UC1");
-            int[] notes = new int[] { 1000, 500, 100, 50, 20,10, 5, 2, 1 };
-            int amount = 0;
-            Console.WriteLine("Enter the amount:");
-            amount = Convert.ToInt32(Console.ReadLine());
-            int totalNotes = 0;
-            for (int i = 0; i < notes.Length; i++)
-            {
-                if (amount >= notes[i])
-                {
-                    totalNotes += amount / notes[i];
-                    Console.WriteLine(notes[i] + " Rs Notes : " + amount / notes[i]);
-                    amount %= notes[i];
-                }
-            }
-            Console.WriteLine("Total Number of Notes : " + totalNotes);
+            Console.WriteLine("Enter the number in Celsius");
+            double c = Convert.ToDouble(Console.ReadLine());
+            
+            Console.WriteLine("Enter the number in infaherenheit ");
+            double f = Convert.ToDouble(Console.ReadLine());
+
+
+            double F = (c * 9 / 5) + 32;
+            double C = (f - 32) * 5 / 9;
+            Console.WriteLine("The temperature of celsius in {0} faherenheit {1}",c,F);
+            Console.WriteLine("The temperature of faherenheit in {0} celsius   {1}", f, C);
         }
 
 
