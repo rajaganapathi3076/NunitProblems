@@ -7,41 +7,45 @@ using System.Threading.Tasks;
 namespace NunitProblems
 {
     
-    
- 
-
-    public static class MathUtils
+    class program
     {
-        public static double Sqrt(double c)
+        static string ToBinary(int number)
         {
-            if (c < 0)
-            {
-                throw new ArgumentException("Input must be nonnegative.");
-            }
+            string binary=Convert.ToString(number,2);
+            return binary.PadLeft(8,'1');
 
-            double t = c;
-            double epsilon = 1e-15;
-
-            while (Math.Abs(t - c / t) > epsilon * t)
-            {
-                t = (c / t + t) / 2.0;
-            }
-
-            return t;
         }
-    }
-
-    public class Program
-    {
+        static int SwapNibbles(int number)
+        {
+            return ((number & 0x0F) << 4) | ((number & 0x0F0) >> 4);
+        }
+        static bool IsPowerOfTwo(int number)
+        {
+            return(number !=0) &((number &(number -1))==0);
+        }
         public static void Main(string[] args)
         {
-            Console.WriteLine("Please Enter the number");
-            double number=Convert.ToDouble(Console.ReadLine());
-            
-            double squareRoot = MathUtils.Sqrt(number);
-            Console.WriteLine($"Square root of {number} is: {squareRoot}");
+            Console.WriteLine("Enter the Number:");
+            int number=Convert.ToInt32(Console.ReadLine());
+
+            string binary=ToBinary(number);
+            Console.WriteLine("The binary Representation: "+  binary);
+
+            int swappednumber=SwapNibbles(number);
+            Console.WriteLine("After swapping Nibbles:  "+  swappednumber);
+
+            bool Ispoweroftwo = IsPowerOfTwo(number);
+            Console.WriteLine("Is the number a power of 2 ??  " + Ispoweroftwo);
+
+
         }
     }
+        
+    
+
+    
+    
+      
 
 
 
