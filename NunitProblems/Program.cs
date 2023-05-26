@@ -12,34 +12,29 @@ namespace NunitProblems
 
     public static class MathUtils
     {
-        public static double Sqrt(double c)
-        {
-            if (c < 0)
-            {
-                throw new ArgumentException("Input must be nonnegative.");
-            }
-
-            double t = c;
-            double epsilon = 1e-15;
-
-            while (Math.Abs(t - c / t) > epsilon * t)
-            {
-                t = (c / t + t) / 2.0;
-            }
-
-            return t;
-        }
-    }
-
-    public class Program
-    {
+       
         public static void Main(string[] args)
         {
-            Console.WriteLine("Please Enter the number");
-            double number=Convert.ToDouble(Console.ReadLine());
+            string answer;
+            string result;
+            Console.WriteLine("Welcome to the Decimal to Binnary function UC6");
+            Console.WriteLine("Please enter the number");
+            answer = Console.ReadLine();
+
+            int num = Convert.ToInt32(answer);
+            result = "  ";
+
+            while (num > 1)
+            {
+                int remainder = num % 2;
+                result = Convert.ToString(remainder) + result;
+                num /= 2;
+            }
+            result=Convert.ToString(num) +result;
+            Console.WriteLine("Binary: {0}", result);
+
+
             
-            double squareRoot = MathUtils.Sqrt(number);
-            Console.WriteLine($"Square root of {number} is: {squareRoot}");
         }
     }
 
